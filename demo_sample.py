@@ -64,7 +64,7 @@ torch.set_float32_matmul_precision('high' if tf32 else 'highest')
 B = len(class_labels)
 label_B: torch.LongTensor = torch.tensor(class_labels, device=device)
 with torch.inference_mode():
-    with torch.autocast('cpu', enabled=True, dtype=torch.float16, cache_enabled=True):    # using bfloat16 can be faster
+    with torch.autocast(device, enabled=True, dtype=torch.float16, cache_enabled=True):    # using bfloat16 can be faster
         recon_B3HW = var.autoregressive_infer_cfg(B=B, label_B=label_B, cfg=cfg, top_k=900, top_p=0.95, g_seed=seed, more_smooth=more_smooth)
 
 chw = torchvision.utils.make_grid(recon_B3HW, nrow=8, padding=0, pad_value=1.0)
