@@ -70,6 +70,7 @@ with torch.inference_mode():
 chw = torchvision.utils.make_grid(recon_B3HW, nrow=8, padding=0, pad_value=1.0)
 chw = chw.permute(1, 2, 0).mul_(255).cpu().numpy()
 chw = PImage.fromarray(chw.astype(np.uint8))
+print(f"finished! chw shape is: {chw.shape}")
 chw.show()
 
 
