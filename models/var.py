@@ -152,7 +152,7 @@ class VAR(nn.Module):
         
         lvl_pos = self.lvl_embed(self.lvl_1L) + self.pos_1LC
         next_token_map = sos.unsqueeze(1).expand(2 * B, self.first_l, -1) + self.pos_start.expand(2 * B, self.first_l, -1) + lvl_pos[:, :self.first_l]
-        
+        print(f"next_token_map shape: {next_token_map.shape}, {next_token_map}")
         cur_L = 0
         f_hat = sos.new_zeros(B, self.Cvae, self.patch_nums[-1], self.patch_nums[-1])
         
