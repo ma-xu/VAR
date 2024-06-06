@@ -71,7 +71,7 @@ with torch.inference_mode():
 chw = torchvision.utils.make_grid(recon_B3HW, nrow=4, padding=0, pad_value=1.0)
 chw = chw.permute(1, 2, 0).mul_(255).cpu().numpy()
 chw = PImage.fromarray(chw.astype(np.uint8))
-chw.save(f"out_depth{MODEL_DEPTH}.png")
+chw.save(f"out_depth{MODEL_DEPTH}_16.png")
 
 
 
