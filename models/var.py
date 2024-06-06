@@ -168,6 +168,7 @@ class VAR(nn.Module):
             for b in self.blocks:
                 x = b(x=x, cond_BD=cond_BD_or_gss, attn_bias=None)
             logits_BlV = self.get_logits(x, cond_BD)
+            print(f"logits_BlV: {logits_BlV}")
             
             t = cfg * ratio
             logits_BlV = (1+t) * logits_BlV[:B] - t * logits_BlV[B:]
